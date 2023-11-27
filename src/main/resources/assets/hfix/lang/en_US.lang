@@ -1,0 +1,5 @@
+# Config categories
+config.hFix.category.chat=Chat Actions
+config.hFix.category.chat.tooltip=Enable/Disable chat actions.
+config.hFix.category.nocookie=NoCookie
+config.hFix.category.nocookie.tooltip=NoCookie options.

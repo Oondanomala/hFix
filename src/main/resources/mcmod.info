@@ -1,0 +1,17 @@
+[
+  {
+    "modid": "hfix",
+    "name": "hFix",
+    "description": "Improves your housing experience with very important features.",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "url": "",
+    "updateUrl": "",
+    "authorList": [
+      "Oondanomala"
+    ],
+    "logoFile": "",
+    "screenshots": [],
+    "dependencies": []
+  }
+]
