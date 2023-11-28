@@ -18,10 +18,10 @@ public class NoCookie {
     @SubscribeEvent
     public void cookieUsed(PlayerInteractEvent event) {
         if (HFix.config.noCookie && event.action != PlayerInteractEvent.Action.LEFT_CLICK_BLOCK) {
-            String ownerName = Util.getHousingOwnerName();
-            if (ownerName == null) return;
-            if (!Arrays.asList(HFix.config.noCookieWhitelist).contains(ownerName.toLowerCase())) {
-                if (isHoldingCookie(event.entityPlayer)) {
+            if (isHoldingCookie(event.entityPlayer)) {
+                String ownerName = Util.getHousingOwnerName();
+                if (ownerName == null) return;
+                if (!Arrays.asList(HFix.config.noCookieWhitelist).contains(ownerName.toLowerCase())) {
                     event.setCanceled(true);
                 }
             }
