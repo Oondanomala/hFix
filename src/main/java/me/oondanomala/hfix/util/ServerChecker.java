@@ -9,7 +9,7 @@ import net.minecraftforge.fml.common.network.FMLNetworkEvent;
 import java.util.regex.Pattern;
 
 public class ServerChecker {
-    private static final Pattern HYPIXEL_IP_REGEX = Pattern.compile("^([^./]+\\.)?hypixel\\.net", Pattern.CASE_INSENSITIVE);
+    private static final Pattern HYPIXEL_IP_REGEX = Pattern.compile("^(?:[^./]+\\.)?hypixel\\.net", Pattern.CASE_INSENSITIVE);
 
     @SubscribeEvent
     public void playerJoinedServer(FMLNetworkEvent.ClientConnectedToServerEvent event) {
