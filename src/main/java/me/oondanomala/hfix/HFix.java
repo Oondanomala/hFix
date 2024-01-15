@@ -1,10 +1,10 @@
 package me.oondanomala.hfix;
 
 import me.oondanomala.hfix.config.Config;
-import me.oondanomala.hfix.util.HousingChecker;
-import me.oondanomala.hfix.util.ServerChecker;
+import me.oondanomala.hfix.location.HousingChecker;
+import me.oondanomala.hfix.location.ServerChecker;
+import me.oondanomala.hfix.location.WorldHousingChecker;
 import me.oondanomala.hfix.util.Util;
-import me.oondanomala.hfix.util.WorldHousingChecker;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;

@@ -1,6 +1,7 @@
-package me.oondanomala.hfix.util;
+package me.oondanomala.hfix.location;
 
 import me.oondanomala.hfix.HFix;
+import me.oondanomala.hfix.util.Util;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ServerData;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;

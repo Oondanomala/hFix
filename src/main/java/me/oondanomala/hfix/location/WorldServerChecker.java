@@ -1,13 +1,12 @@
-package me.oondanomala.hfix.util;
+package me.oondanomala.hfix.location;
 
 import me.oondanomala.hfix.HFix;
+import me.oondanomala.hfix.util.Util;
 import net.minecraft.client.Minecraft;
-import net.minecraft.scoreboard.ScoreObjective;
-import net.minecraft.util.StringUtils;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
-public class WorldHousingChecker {
+public class WorldServerChecker {
     private int counter = 20;
     private int tries = 5;
 
@@ -17,22 +16,16 @@ public class WorldHousingChecker {
         if (counter != 0) {
             --counter;
         } else {
-            if (Minecraft.getMinecraft().theWorld == null) {
-                counter = 20;
-                --tries;
-                return;
-            }
-            ScoreObjective scoreboard = Minecraft.getMinecraft().theWorld.getScoreboard().getObjectiveInDisplaySlot(1);
-            if (scoreboard == null) {
+            if (Minecraft.getMinecraft().thePlayer == null) {
                 counter = 20;
                 --tries;
             } else {
-                HFix.instance.setOnHousing(StringUtils.stripControlCodes(scoreboard.getDisplayName()).equals("HOUSING"));
+                HFix.instance.setOnHypixel(Minecraft.getMinecraft().thePlayer.getClientBrand().toLowerCase().contains("hypixel"));
                 Util.unregisterEvents(this);
             }
         }
         if (tries == 0) {
-            HFix.instance.setOnHousing(false);
+            HFix.instance.setOnHypixel(false);
             Util.unregisterEvents(this);
         }
     }

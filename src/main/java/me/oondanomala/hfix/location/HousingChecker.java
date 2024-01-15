@@ -1,5 +1,6 @@
-package me.oondanomala.hfix.util;
+package me.oondanomala.hfix.location;
 
+import me.oondanomala.hfix.util.Util;
 import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
