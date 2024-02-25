@@ -43,3 +43,12 @@ processResources {
         exclude 'mcmod.info'
     }
 }
+
+// Fix resources when in dev environment
+tasks.register('moveResources') {
+    dependsOn processResources
+    doLast {
+        ant.move file: "${buildDir}/resources/main", todir: "${buildDir}/classes/java"
+    }
+}
+tasks.classes.dependsOn moveResources
