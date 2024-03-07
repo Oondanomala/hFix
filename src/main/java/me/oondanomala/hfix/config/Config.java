@@ -15,6 +15,8 @@ public class Config {
     public boolean noCookie;
     public String[] noCookieWhitelist;
 
+    public String[] gg_list;
+
     public Config(File configFile) {
         config = new Configuration(configFile);
         loadConfig();
@@ -32,6 +34,8 @@ public class Config {
         config.setCategoryLanguageKey("nocookie", "config.hFix.category.nocookie");
         noCookie = config.getBoolean("NoCookie", "nocookie", false, "Prevents you from giving cookies to any owner not in the list.");
         noCookieWhitelist = config.getStringList("NoCookie Whitelist", "nocookie", new String[]{}, "List of owners to allow giving cookies to. Names must be lowercase!");
+
+        gg_list = config.getStringList("Auto GG list", "chat", new String[]{}, "List of gg messages to be displayed upon pk completion. (Minimum 4 messages recommended)");
 
         config.save();
     }

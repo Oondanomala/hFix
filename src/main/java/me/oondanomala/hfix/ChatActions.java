@@ -8,8 +8,10 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import org.lwjgl.Sys;
+import org.omg.CosNaming._BindingIteratorImplBase;
 
-import java.util.Queue;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 import java.util.concurrent.TimeUnit;
@@ -34,20 +36,25 @@ public class ChatActions {
         // Parkour autoGG
         // TODO: Handle duplicate messages
         else if (HFix.config.parkourAutoGG && PARKOUR_COMPLETION_MESSAGE.matcher(event.message.getFormattedText()).matches()) {
-            String[] gg_list = {"gg", "ggs", "nice", "gj", "sick", "rad", "nice", "awesome"};
+
+            List<String> gg_list = Arrays.asList("gg", "nice", "gj", "sweet", "rad", "sick");
+
+            if (HFix.config.gg_list.length != 0) {
+                gg_list = (Arrays.asList(HFix.config.gg_list));
+            }
 
             Random rn = new Random();
-            int index = (rn.nextInt(gg_list.length + 1) - 1);
+            int index = (rn.nextInt(gg_list.size() + 1) - 1);
 
             if (index == last_index) {
                 ++index;
-                if (index == gg_list.length) {
+                if (index >= gg_list.size()) {
                     --index;
                 }
             }
             last_index = index;
 
-            Minecraft.getMinecraft().thePlayer.sendChatMessage("/ac " + gg_list[index]);
+            Minecraft.getMinecraft().thePlayer.sendChatMessage("/ac " + gg_list.get(index));
         }
         // Cookie autoTY
         else if (HFix.config.cookieAutoTy) {
