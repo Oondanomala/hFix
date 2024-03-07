@@ -27,7 +27,7 @@ public class Config {
 
         // Chat Actions
         config.setCategoryLanguageKey("chat", "config.hFix.category.chat");
-        parkourAutoGG = config.getBoolean("Parkour AutoGG", "chat", true, "Automatically says gg whenever someone finishes a parkour. Be careful with this, it can be spam triggered.");
+        parkourAutoGG = config.getBoolean("Parkour AutoGG", "chat", false, "Automatically says gg whenever someone finishes a parkour. Be careful with this, it can be spam triggered.");
         hideCantBuildMessage = config.getBoolean("Hide Can't Build Message", "chat", false, "Hides the \"You can't build in this house!\" message.");
         cookieAutoTy = config.getBoolean("Cookie AutoTY", "chat", false, "Automatically thanks guests for giving cookies.");
         // NoCookie
