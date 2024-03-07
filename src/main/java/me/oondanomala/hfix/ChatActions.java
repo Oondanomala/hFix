@@ -2,19 +2,13 @@ package me.oondanomala.hfix;
 
 import me.oondanomala.hfix.util.Util;
 import net.minecraft.client.Minecraft;
-import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.gameevent.TickEvent;
-import org.lwjgl.Sys;
-import org.omg.CosNaming._BindingIteratorImplBase;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -23,7 +17,7 @@ public class ChatActions {
     private static final Pattern PARKOUR_COMPLETION_MESSAGE = Pattern.compile(".+\\u00A7r\\u00A7a completed the parkour in \\u00A7r\\u00A7e\\u00A7l\\d+:\\d\\d\\.\\d\\d\\d!\\u00A7r$");
     private static final Pattern RECEIVED_COOKIE_MESSAGE = Pattern.compile("^You received \\d\\d? cookies from (.+)!$");
 
-    private static int last_index = -1;
+    private static int LAST_INDEX = -1;
 
     @SubscribeEvent
     public void chatReceived(ClientChatReceivedEvent event) {
@@ -37,24 +31,24 @@ public class ChatActions {
         // TODO: Handle duplicate messages
         else if (HFix.config.parkourAutoGG && PARKOUR_COMPLETION_MESSAGE.matcher(event.message.getFormattedText()).matches()) {
 
-            List<String> gg_list = Arrays.asList("gg", "nice", "gj", "sweet", "rad", "sick");
+            List<String> ggList = Arrays.asList("gg", "nice", "gj", "sweet", "rad", "sick");
 
-            if (HFix.config.gg_list.length != 0) {
-                gg_list = (Arrays.asList(HFix.config.gg_list));
+            if (HFix.config.ggList.length != 0) {
+                ggList = (Arrays.asList(HFix.config.ggList));
             }
 
             Random rn = new Random();
-            int index = (rn.nextInt(gg_list.size() + 1) - 1);
+            int index = (rn.nextInt(ggList.size() + 1) - 1);
 
-            if (index == last_index) {
+            if (index == LAST_INDEX) {
                 ++index;
-                if (index >= gg_list.size()) {
+                if (index >= ggList.size()) {
                     --index;
                 }
             }
-            last_index = index;
+            LAST_INDEX = index;
 
-            Minecraft.getMinecraft().thePlayer.sendChatMessage("/ac " + gg_list.get(index));
+            Minecraft.getMinecraft().thePlayer.sendChatMessage("/ac " + ggList.get(index));
         }
         // Cookie autoTY
         else if (HFix.config.cookieAutoTy) {

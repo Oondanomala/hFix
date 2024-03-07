@@ -15,7 +15,7 @@ public class Config {
     public boolean noCookie;
     public String[] noCookieWhitelist;
 
-    public String[] gg_list;
+    public String[] ggList;
 
     public Config(File configFile) {
         config = new Configuration(configFile);
@@ -27,7 +27,7 @@ public class Config {
 
         // Chat Actions
         config.setCategoryLanguageKey("chat", "config.hFix.category.chat");
-        parkourAutoGG = config.getBoolean("Parkour AutoGG", "chat", false, "Automatically says gg whenever someone finishes a parkour. Be careful with this, it can be spam triggered.");
+        parkourAutoGG = config.getBoolean("Parkour AutoGG", "chat", true, "Automatically says gg whenever someone finishes a parkour. Be careful with this, it can be spam triggered.");
         hideCantBuildMessage = config.getBoolean("Hide Can't Build Message", "chat", false, "Hides the \"You can't build in this house!\" message.");
         cookieAutoTy = config.getBoolean("Cookie AutoTY", "chat", false, "Automatically thanks guests for giving cookies.");
         // NoCookie
@@ -35,7 +35,7 @@ public class Config {
         noCookie = config.getBoolean("NoCookie", "nocookie", false, "Prevents you from giving cookies to any owner not in the list.");
         noCookieWhitelist = config.getStringList("NoCookie Whitelist", "nocookie", new String[]{}, "List of owners to allow giving cookies to. Names must be lowercase!");
 
-        gg_list = config.getStringList("Auto GG list", "chat", new String[]{}, "List of gg messages to be displayed upon pk completion. (Minimum 4 messages recommended)");
+        ggList = config.getStringList("Auto GG list", "chat", new String[]{}, "List of gg messages to be displayed upon pk completion. (Minimum 4 messages recommended)");
 
         config.save();
     }
