@@ -42,6 +42,7 @@ processResources {
     from(sourceSets.main.resources.srcDirs) {
         exclude 'mcmod.info'
     }
+    rename '(.+_at.cfg)', 'META-INF/$1'
 }
 
 // Fix resources when in dev environment
@@ -52,3 +53,7 @@ tasks.register('moveResources') {
     }
 }
 tasks.classes.dependsOn moveResources
+
+jar {
+    manifest.attributes('FMLAT': 'hfix_at.cfg')
+}

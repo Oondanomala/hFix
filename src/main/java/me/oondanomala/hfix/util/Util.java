@@ -2,9 +2,7 @@ package me.oondanomala.hfix.util;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiPlayerTabOverlay;
-import net.minecraft.util.IChatComponent;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fml.relauncher.ReflectionHelper;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -23,8 +21,7 @@ public class Util {
     }
 
     public static String getHousingOwnerName() {
-        IChatComponent footer = ReflectionHelper.getPrivateValue(GuiPlayerTabOverlay.class, Minecraft.getMinecraft().ingameGUI.getTabList(), "field_175255_h", "footer");
-        Matcher ownerMatcher = HOUSE_OWNER_REGEX.matcher(footer.getUnformattedText());
+        Matcher ownerMatcher = HOUSE_OWNER_REGEX.matcher(Minecraft.getMinecraft().ingameGUI.getTabList().footer.getUnformattedText());
         if (ownerMatcher.find()) {
             return removeRank(ownerMatcher.group(1));
         }
