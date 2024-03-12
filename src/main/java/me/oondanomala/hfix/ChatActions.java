@@ -17,7 +17,7 @@ public class ChatActions {
     private static final Pattern PARKOUR_COMPLETION_MESSAGE = Pattern.compile(".+\\u00A7r\\u00A7a completed the parkour in \\u00A7r\\u00A7e\\u00A7l\\d+:\\d\\d\\.\\d\\d\\d!\\u00A7r$");
     private static final Pattern RECEIVED_COOKIE_MESSAGE = Pattern.compile("^You received \\d\\d? cookies from (.+)!$");
 
-    private int lastIndex = -1;
+    int lastIndex = -1;
 
     @SubscribeEvent
     public void chatReceived(ClientChatReceivedEvent event) {
