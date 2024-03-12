@@ -12,8 +12,6 @@ buildscript {
     }
 }
 apply plugin: 'net.minecraftforge.gradle.forge'
-apply plugin: 'eclipse'
-apply plugin: 'idea'
 
 version = "1.1.5"
 group = "me.oondanomala.hfix"

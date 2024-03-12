@@ -17,7 +17,7 @@ public class ChatActions {
     private static final Pattern PARKOUR_COMPLETION_MESSAGE = Pattern.compile(".+\\u00A7r\\u00A7a completed the parkour in \\u00A7r\\u00A7e\\u00A7l\\d+:\\d\\d\\.\\d\\d\\d!\\u00A7r$");
     private static final Pattern RECEIVED_COOKIE_MESSAGE = Pattern.compile("^You received \\d\\d? cookies from (.+)!$");
 
-    private static int LAST_INDEX = -1;
+    private int lastIndex = -1;
 
     @SubscribeEvent
     public void chatReceived(ClientChatReceivedEvent event) {
@@ -28,10 +28,9 @@ public class ChatActions {
             event.setCanceled(true);
         }
         // Parkour autoGG
-        // TODO: Handle duplicate messages
         else if (HFix.config.parkourAutoGG && PARKOUR_COMPLETION_MESSAGE.matcher(event.message.getFormattedText()).matches()) {
 
-            List<String> ggList = Arrays.asList("gg", "nice", "gj", "sweet", "rad", "sick");
+            List<String> ggList = Arrays.asList("gg", "gg!", "GG", "nice");
 
             if (HFix.config.ggList.length != 0) {
                 ggList = (Arrays.asList(HFix.config.ggList));
@@ -40,13 +39,13 @@ public class ChatActions {
             Random rn = new Random();
             int index = (rn.nextInt(ggList.size() + 1) - 1);
 
-            if (index == LAST_INDEX) {
+            if (index == lastIndex) {
                 ++index;
                 if (index >= ggList.size()) {
                     --index;
                 }
             }
-            LAST_INDEX = index;
+            lastIndex = index;
 
             Minecraft.getMinecraft().thePlayer.sendChatMessage("/ac " + ggList.get(index));
         }
