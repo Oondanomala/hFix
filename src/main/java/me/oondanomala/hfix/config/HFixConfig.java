@@ -24,7 +24,6 @@ public class HFixConfig extends GuiConfig {
         List<IConfigElement> list = new ArrayList<>();
         list.add(new ConfigElement(HFix.config.config.getCategory("chat")));
         list.add(new ConfigElement(HFix.config.config.getCategory("nocookie")));
-
         return list;
     }
 }
