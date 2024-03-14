@@ -6,7 +6,6 @@ import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import java.util.Random;
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
