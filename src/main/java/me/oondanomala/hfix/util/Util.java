@@ -1,7 +1,6 @@
 package me.oondanomala.hfix.util;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiPlayerTabOverlay;
 import net.minecraftforge.common.MinecraftForge;
 
 import java.util.regex.Matcher;
