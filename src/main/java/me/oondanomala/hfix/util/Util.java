@@ -1,6 +1,9 @@
 package me.oondanomala.hfix.util;
 
+import me.oondanomala.hfix.HFix;
 import net.minecraft.client.Minecraft;
+import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraftforge.common.MinecraftForge;
 
 import java.util.regex.Matcher;
@@ -25,6 +28,11 @@ public class Util {
             return removeRank(ownerMatcher.group(1));
         }
         return null;
+    }
+
+    public static void showChatMessage(String message) {
+        if (Minecraft.getMinecraft().thePlayer == null) return;
+        Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText(EnumChatFormatting.GRAY + "[" + EnumChatFormatting.BLUE + EnumChatFormatting.BOLD + HFix.NAME + EnumChatFormatting.GRAY + "] " + message));
     }
 
     public static void registerEvents(Object... events) {

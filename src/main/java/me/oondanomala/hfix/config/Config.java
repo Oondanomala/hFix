@@ -17,6 +17,9 @@ public class Config {
     public boolean cookieAutoTy;
     public boolean noCookie;
     public String[] noCookieWhitelist;
+    public boolean playerDetector;
+    public String[] playerDetectorNames;
+    public boolean playerDetectorSound;
 
     public Config(File configFile) {
         config = new Configuration(configFile);
@@ -35,6 +38,12 @@ public class Config {
         config.setCategoryLanguageKey("nocookie", "config.hFix.category.nocookie");
         noCookie = config.getBoolean("NoCookie", "nocookie", false, "Prevents you from giving cookies to any owner not in the list.");
         noCookieWhitelist = config.getStringList("NoCookie Whitelist", "nocookie", new String[]{}, "List of owners to allow giving cookies to. Names must be lowercase!");
+        // PlayerDetector
+        config.setCategoryLanguageKey("playerdetector", "config.hFix.category.playerdetector");
+        config.setCategoryPropertyOrder("playerdetector", new ArrayList<>(Arrays.asList("Player Detector", "Play Sound", "Players to Detect")));
+        playerDetector = config.getBoolean("Player Detector", "playerdetector", false, "Warns you when a player in the list joins the server you are in.");
+        playerDetectorSound = config.getBoolean("Play Sound", "playerdetector", true, "Plays a sound when a player is detected.");
+        playerDetectorNames = config.getStringList("Players to Detect", "playerdetector", new String[]{}, "List of players to detect. Names must be lowercase!");
 
         config.save();
     }

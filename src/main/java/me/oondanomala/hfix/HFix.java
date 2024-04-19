@@ -20,7 +20,7 @@ public class HFix {
     @Mod.Instance(MODID)
     public static HFix instance;
     public static Config config;
-    private final Object[] hypixelEventList = {new HousingChecker(), new WorldHousingChecker()};
+    private final Object[] hypixelEventList = {new HousingChecker(), new WorldHousingChecker(), new PlayerDetector()};
     private final Object[] housingEventList = {new ChatActions(), new NoCookie()};
     public boolean isOnHypixel = false;
     public boolean isOnHousing = false;

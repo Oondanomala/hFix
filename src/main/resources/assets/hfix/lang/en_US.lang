@@ -3,3 +3,5 @@ config.hFix.category.chat=Chat Actions
 config.hFix.category.chat.tooltip=Enable/Disable chat actions.
 config.hFix.category.nocookie=NoCookie
 config.hFix.category.nocookie.tooltip=NoCookie options.
+config.hFix.category.playerdetector=Player Detector
+config.hFix.category.playerdetector.tooltip=Player Detector options.
