@@ -14,6 +14,7 @@ public class Config {
     public boolean parkourAutoGG;
     public String[] autoGGMessages;
     public boolean hideCantBuildMessage;
+    public boolean hideJoinAndLeaveMessage;
     public boolean cookieAutoTy;
     public boolean noCookie;
     public String[] noCookieWhitelist;
@@ -29,10 +30,11 @@ public class Config {
     private void loadConfig() {
         // Chat Actions
         config.setCategoryLanguageKey("chat", "config.hFix.category.chat");
-        config.setCategoryPropertyOrder("chat", new ArrayList<>(Arrays.asList("Parkour AutoGG", "AutoGG Messages", "Hide Can't Build Message", "Cookie AutoTY")));
+        config.setCategoryPropertyOrder("chat", new ArrayList<>(Arrays.asList("Parkour AutoGG", "AutoGG Messages", "Hide Can't Build Message", "Hide Join and Leave Messages", "Cookie AutoTY")));
         parkourAutoGG = config.getBoolean("Parkour AutoGG", "chat", false, "Automatically says gg whenever someone finishes a parkour.");
         autoGGMessages = config.getStringList("AutoGG Messages", "chat", new String[]{"gg", "gg!", "GG", "nice"}, "List of gg messages to be sent upon parkour completion. (Minimum 4 messages recommended)");
         hideCantBuildMessage = config.getBoolean("Hide Can't Build Message", "chat", false, "Hides the \"You can't build in this house!\" message.");
+        hideJoinAndLeaveMessage = config.getBoolean("Hide Join and Leave Messages", "chat", false, "Hides the house join and leave messages.");
         cookieAutoTy = config.getBoolean("Cookie AutoTY", "chat", false, "Automatically thanks guests for giving cookies.");
         // NoCookie
         config.setCategoryLanguageKey("nocookie", "config.hFix.category.nocookie");

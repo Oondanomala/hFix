@@ -11,6 +11,7 @@ import java.util.regex.Pattern;
 
 public class ChatActions {
     private static final Pattern CANT_BUILD_MESSAGE = Pattern.compile("^You can't build in this house!$|^You can't build while the house is in social mode!$");
+    private static final Pattern JOIN_LEAVE_MESSAGES = Pattern.compile("^(?:\\[\\w+\\+*] )?\\w+ (?:entered|left) the world\\.$");
     private static final Pattern PARKOUR_COMPLETION_MESSAGE = Pattern.compile("^§r§\\w+\\u00A7r\\u00A7a completed the parkour in \\u00A7r\\u00A7e\\u00A7l\\d+:\\d\\d\\.\\d\\d\\d!\\u00A7r$");
     private static final Pattern RECEIVED_COOKIE_MESSAGE = Pattern.compile("^You received \\d\\d? cookies from (.+)!$");
     private final Random random = new Random();
@@ -22,6 +23,10 @@ public class ChatActions {
 
         // Hide can't build message
         if (HFix.config.hideCantBuildMessage && CANT_BUILD_MESSAGE.matcher(event.message.getUnformattedText()).matches()) {
+            event.setCanceled(true);
+        }
+        // Hide join and leave messages
+        else if (HFix.config.hideJoinAndLeaveMessage && JOIN_LEAVE_MESSAGES.matcher(event.message.getUnformattedText()).matches()) {
             event.setCanceled(true);
         }
         // Parkour autoGG
