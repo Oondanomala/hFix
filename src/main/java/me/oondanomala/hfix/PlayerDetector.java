@@ -13,7 +13,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class PlayerDetector {
-    private Set<String> tabList = new HashSet<>();
+    private Set<String> previousTabList = new HashSet<>();
 
     @SubscribeEvent
     public void onTick(TickEvent.ClientTickEvent event) {
@@ -24,9 +24,9 @@ public class PlayerDetector {
             for (NetworkPlayerInfo info : Minecraft.getMinecraft().thePlayer.sendQueue.getPlayerInfoMap()) {
                 String name = info.getGameProfile().getName();
 
-                if (!tabList.contains(name) && Arrays.asList(HFix.config.playerDetectorNames).contains(name.toLowerCase())) {
+                if (!previousTabList.contains(name) && Arrays.asList(HFix.config.playerDetectorNames).contains(name.toLowerCase())) {
                     // FIXME: Sometimes the tab gets loaded in multiple ticks, and some players that were in the server get treated like they just joined
-                    if (tabList.isEmpty()) {
+                    if (previousTabList.isEmpty()) {
                         Util.showChatMessage(EnumChatFormatting.RED + "WARNING: Player " + EnumChatFormatting.AQUA + name + EnumChatFormatting.RED + " is in the server.");
                     } else {
                         Util.showChatMessage(EnumChatFormatting.RED + "WARNING: Player " + EnumChatFormatting.AQUA + name + EnumChatFormatting.RED + " joined the server.");
@@ -38,12 +38,12 @@ public class PlayerDetector {
                 set.add(name);
             }
 
-            tabList = set;
+            previousTabList = set;
         }
     }
 
     @SubscribeEvent
     public void onWorldUnload(WorldEvent.Unload event) {
-        tabList.clear();
+        previousTabList.clear();
     }
 }
