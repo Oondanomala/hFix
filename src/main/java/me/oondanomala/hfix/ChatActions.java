@@ -1,6 +1,5 @@
 package me.oondanomala.hfix;
 
-import me.oondanomala.hfix.util.Util;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -13,7 +12,7 @@ public class ChatActions {
     private static final Pattern CANT_BUILD_MESSAGE = Pattern.compile("^You can't build in this house!$|^You can't build while the house is in social mode!$");
     private static final Pattern JOIN_LEAVE_MESSAGES = Pattern.compile("^(?:\\[\\w+\\+*] )?\\w+ (?:entered|left) the world\\.$");
     private static final Pattern PARKOUR_COMPLETION_MESSAGE = Pattern.compile("^§r§\\w+\\u00A7r\\u00A7a completed the parkour in \\u00A7r\\u00A7e\\u00A7l\\d+:\\d\\d\\.\\d\\d\\d!\\u00A7r$");
-    private static final Pattern RECEIVED_COOKIE_MESSAGE = Pattern.compile("^You received \\d\\d? cookies from (.+)!$");
+    private static final Pattern RECEIVED_COOKIE_MESSAGE = Pattern.compile("^You received \\d\\d? cookies from (?:\\[\\w+\\+*] )?(\\w+)!$");
     private final Random random = new Random();
     private int lastAutoGGIndex = -1;
 
@@ -48,7 +47,7 @@ public class ChatActions {
         else if (HFix.config.cookieAutoTy) {
             Matcher receivedCookieMatcher = RECEIVED_COOKIE_MESSAGE.matcher(event.message.getUnformattedText());
             if (receivedCookieMatcher.find()) {
-                Minecraft.getMinecraft().thePlayer.sendChatMessage("/ac ty " + Util.removeRank(receivedCookieMatcher.group(1)));
+                Minecraft.getMinecraft().thePlayer.sendChatMessage("/ac ty " + receivedCookieMatcher.group(1));
             }
         }
     }
