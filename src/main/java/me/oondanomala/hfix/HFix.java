@@ -1,9 +1,7 @@
 package me.oondanomala.hfix;
 
 import me.oondanomala.hfix.config.Config;
-import me.oondanomala.hfix.location.HousingChecker;
-import me.oondanomala.hfix.location.ServerChecker;
-import me.oondanomala.hfix.location.WorldHousingChecker;
+import me.oondanomala.hfix.location.LocationChecker;
 import me.oondanomala.hfix.util.Util;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -20,7 +18,7 @@ public class HFix {
     @Mod.Instance(MODID)
     public static HFix instance;
     public static Config config;
-    private final Object[] hypixelEventList = {new HousingChecker(), new WorldHousingChecker(), new PlayerDetector()};
+    private final Object[] hypixelEventList = {new PlayerDetector()};
     private final Object[] housingEventList = {new ChatActions(), new NoCookie()};
     public boolean isOnHypixel = false;
     public boolean isOnHousing = false;
@@ -54,6 +52,6 @@ public class HFix {
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
-        Util.registerEvents(config, new ServerChecker());
+        Util.registerEvents(config, new LocationChecker());
     }
 }
