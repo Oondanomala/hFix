@@ -1,9 +1,10 @@
 {
   "homepage": "https://github.com/Oondanomala/hFix/releases/latest",
   "promos": {
-    "1.8.9-recommended": "1.1.0"
+    "1.8.9-recommended": "1.2.0"
   },
   "1.8.9": {
+    "1.2.0": "New feature: hiding player join and leave messages!\nMade the autoGG regex stricter, this should prevent any false positives.",
     "1.1.0": "New feature: warns you when players in a list join the server you are in!\nSlightly better buildscript and code.",
     "1.0.1": "Random autoGG messages, no more \"You cannot say the same message twice!\" annoyance!\nAdded update checker.\nBetter metadata, and better code.",
     "1.0.0": "Initial release."
