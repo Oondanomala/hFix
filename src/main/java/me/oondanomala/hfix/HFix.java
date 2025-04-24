@@ -26,21 +26,25 @@ public class HFix {
     public boolean isOnHousing = false;
 
     public void setOnHypixel(boolean onHypixel) {
-        if (onHypixel) {
-            Util.registerEvents(hypixelEventList);
-        } else {
-            Util.unregisterEvents(hypixelEventList);
+        if (isOnHypixel != onHypixel) {
+            if (onHypixel) {
+                Util.registerEvents(hypixelEventList);
+            } else {
+                Util.unregisterEvents(hypixelEventList);
+            }
+            isOnHypixel = onHypixel;
         }
-        isOnHypixel = onHypixel;
     }
 
     public void setOnHousing(boolean onHousing) {
-        if (onHousing) {
-            Util.registerEvents(housingEventList);
-        } else {
-            Util.unregisterEvents(housingEventList);
+        if (isOnHousing != onHousing) {
+            if (onHousing) {
+                Util.registerEvents(housingEventList);
+            } else {
+                Util.unregisterEvents(housingEventList);
+            }
+            isOnHousing = onHousing;
         }
-        isOnHousing = onHousing;
     }
 
     @Mod.EventHandler
