@@ -1,6 +1,6 @@
 package me.oondanomala.hfix;
 
-import net.minecraft.client.Minecraft;
+import me.oondanomala.hfix.util.Util;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
@@ -31,23 +31,23 @@ public class ChatActions {
         // Parkour autoGG
         else if (HFix.config.parkourAutoGG && PARKOUR_COMPLETION_MESSAGE.matcher(event.message.getFormattedText()).matches()) {
             if (HFix.config.autoGGMessages.length == 0) {
-                Minecraft.getMinecraft().thePlayer.sendChatMessage("/ac gg");
+                Util.sendMessageToChat("/ac gg");
             } else if (HFix.config.autoGGMessages.length == 1) {
-                Minecraft.getMinecraft().thePlayer.sendChatMessage("/ac " + HFix.config.autoGGMessages[0]);
+                Util.sendMessageToChat("/ac " + HFix.config.autoGGMessages[0]);
             } else {
                 int index;
                 do {
                     index = random.nextInt(HFix.config.autoGGMessages.length);
                 } while (index == lastAutoGGIndex);
                 lastAutoGGIndex = index;
-                Minecraft.getMinecraft().thePlayer.sendChatMessage("/ac " + HFix.config.autoGGMessages[index]);
+                Util.sendMessageToChat("/ac " + HFix.config.autoGGMessages[index]);
             }
         }
         // Cookie autoTY
         else if (HFix.config.cookieAutoTy) {
             Matcher receivedCookieMatcher = RECEIVED_COOKIE_MESSAGE.matcher(event.message.getUnformattedText());
             if (receivedCookieMatcher.find()) {
-                Minecraft.getMinecraft().thePlayer.sendChatMessage("/ac ty " + receivedCookieMatcher.group(1));
+                Util.sendMessageToChat("/ac ty " + receivedCookieMatcher.group(1));
             }
         }
     }

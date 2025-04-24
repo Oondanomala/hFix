@@ -25,6 +25,11 @@ public final class Util {
         Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText(EnumChatFormatting.GRAY + "[" + EnumChatFormatting.BLUE + EnumChatFormatting.BOLD + HFix.NAME + EnumChatFormatting.GRAY + "] " + message));
     }
 
+    public static void sendMessageToChat(String message) {
+        if (Minecraft.getMinecraft().thePlayer == null) return;
+        Minecraft.getMinecraft().thePlayer.sendChatMessage(message);
+    }
+
     public static void registerEvents(Object... events) {
         for (Object event : events) {
             MinecraftForge.EVENT_BUS.register(event);
