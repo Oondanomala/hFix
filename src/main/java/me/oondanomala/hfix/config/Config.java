@@ -31,21 +31,73 @@ public class Config {
         // Chat Actions
         config.setCategoryLanguageKey("chat", "config.hFix.category.chat");
         config.setCategoryPropertyOrder("chat", new ArrayList<>(Arrays.asList("Parkour AutoGG", "AutoGG Messages", "Hide Can't Build Message", "Hide Join and Leave Messages", "Cookie AutoTY")));
-        parkourAutoGG = config.getBoolean("Parkour AutoGG", "chat", false, "Automatically says gg whenever someone finishes a parkour.");
-        autoGGMessages = config.getStringList("AutoGG Messages", "chat", new String[]{"gg", "gg!", "GG", "nice"}, "List of gg messages to be sent upon parkour completion. (Minimum 4 messages recommended)");
-        hideCantBuildMessage = config.getBoolean("Hide Can't Build Message", "chat", false, "Hides the \"You can't build in this house!\" message.");
-        hideJoinAndLeaveMessage = config.getBoolean("Hide Join and Leave Messages", "chat", false, "Hides the house join and leave messages.");
-        cookieAutoTy = config.getBoolean("Cookie AutoTY", "chat", false, "Automatically thanks guests for giving cookies.");
+        parkourAutoGG = config.getBoolean(
+                "Parkour AutoGG",
+                "chat",
+                false,
+                "Automatically says gg whenever someone finishes a parkour."
+        );
+        autoGGMessages = config.getStringList(
+                "AutoGG Messages",
+                "chat",
+                new String[]{"gg", "gg!", "GG", "nice"},
+                "List of gg messages to be sent upon parkour completion. (Minimum 4 messages recommended)"
+        );
+        hideCantBuildMessage = config.getBoolean(
+                "Hide Can't Build Message",
+                "chat",
+                false,
+                "Hides the \"You can't build in this house!\" message."
+        );
+        hideJoinAndLeaveMessage = config.getBoolean(
+                "Hide Join and Leave Messages",
+                "chat",
+                false,
+                "Hides the house join and leave messages."
+        );
+        cookieAutoTy = config.getBoolean(
+                "Cookie AutoTY",
+                "chat",
+                false,
+                "Automatically thanks guests for giving cookies."
+        );
+
         // NoCookie
         config.setCategoryLanguageKey("nocookie", "config.hFix.category.nocookie");
-        noCookie = config.getBoolean("NoCookie", "nocookie", false, "Prevents you from giving cookies to any owner not in the list.");
-        noCookieWhitelist = config.getStringList("NoCookie Whitelist", "nocookie", new String[]{}, "List of owners to allow giving cookies to. Names must be lowercase!");
+        noCookie = config.getBoolean(
+                "NoCookie",
+                "nocookie",
+                false,
+                "Prevents you from giving cookies to any owner not in the list."
+        );
+        noCookieWhitelist = config.getStringList(
+                "NoCookie Whitelist",
+                "nocookie",
+                new String[]{},
+                "List of owners to allow giving cookies to. Names must be lowercase!"
+        );
+
         // PlayerDetector
         config.setCategoryLanguageKey("playerdetector", "config.hFix.category.playerdetector");
         config.setCategoryPropertyOrder("playerdetector", new ArrayList<>(Arrays.asList("Player Detector", "Play Sound", "Players to Detect")));
-        playerDetector = config.getBoolean("Player Detector", "playerdetector", false, "Warns you when a player in the list joins the server you are in.");
-        playerDetectorSound = config.getBoolean("Play Sound", "playerdetector", true, "Plays a sound when a player is detected.");
-        playerDetectorNames = config.getStringList("Players to Detect", "playerdetector", new String[]{}, "List of players to detect. Names must be lowercase!");
+        playerDetector = config.getBoolean(
+                "Player Detector",
+                "playerdetector",
+                false,
+                "Warns you when a player in the list joins the server you are in."
+        );
+        playerDetectorSound = config.getBoolean(
+                "Play Sound",
+                "playerdetector",
+                true,
+                "Plays a sound when a player is detected."
+        );
+        playerDetectorNames = config.getStringList(
+                "Players to Detect",
+                "playerdetector",
+                new String[]{},
+                "List of players to detect. Names must be lowercase!"
+        );
 
         config.save();
     }
