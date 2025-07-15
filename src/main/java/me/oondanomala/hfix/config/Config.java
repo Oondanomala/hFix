@@ -13,7 +13,8 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Config {
-    public Configuration config;
+    public final Configuration config;
+
     public boolean parkourAutoGG;
     public String[] autoGGMessages;
     public boolean hideCantBuildMessage;
