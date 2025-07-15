@@ -6,8 +6,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-import java.util.Arrays;
-
 public class NoCookie {
     private boolean isHoldingCookie(EntityPlayer player) {
         ItemStack heldItem = player.getCurrentEquippedItem();
@@ -21,7 +19,7 @@ public class NoCookie {
             if (isHoldingCookie(event.entityPlayer)) {
                 String ownerName = Util.getHousingOwnerName();
                 if (ownerName == null) return;
-                if (!Arrays.asList(HFix.config.noCookieWhitelist).contains(ownerName.toLowerCase())) {
+                if (!HFix.config.noCookieWhitelist.contains(ownerName.toLowerCase())) {
                     event.setCanceled(true);
                 }
             }

@@ -8,6 +8,9 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Locale;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Config {
     public Configuration config;
@@ -17,9 +20,9 @@ public class Config {
     public boolean hideJoinAndLeaveMessage;
     public boolean cookieAutoTy;
     public boolean noCookie;
-    public String[] noCookieWhitelist;
+    public Set<String> noCookieWhitelist;
     public boolean playerDetector;
-    public String[] playerDetectorNames;
+    public Set<String> playerDetectorNames;
     public boolean playerDetectorSound;
 
     public Config(File configFile) {
@@ -70,12 +73,12 @@ public class Config {
                 false,
                 "Prevents you from giving cookies to any owner not in the list."
         );
-        noCookieWhitelist = config.getStringList(
+        noCookieWhitelist = Arrays.stream(config.getStringList(
                 "NoCookie Whitelist",
                 "nocookie",
                 new String[]{},
-                "List of owners to allow giving cookies to. Names must be lowercase!"
-        );
+                "List of owners to allow giving cookies to. Case insensitive."
+        )).map(s -> s.toLowerCase(Locale.ENGLISH)).collect(Collectors.toSet());
 
         // PlayerDetector
         config.setCategoryLanguageKey("playerdetector", "config.hFix.category.playerdetector");
@@ -92,12 +95,12 @@ public class Config {
                 true,
                 "Plays a sound when a player is detected."
         );
-        playerDetectorNames = config.getStringList(
+        playerDetectorNames = Arrays.stream(config.getStringList(
                 "Players to Detect",
                 "playerdetector",
                 new String[]{},
-                "List of players to detect. Names must be lowercase!"
-        );
+                "List of players to detect. Case insensitive."
+        )).map(s -> s.toLowerCase(Locale.ENGLISH)).collect(Collectors.toSet());
 
         config.save();
     }

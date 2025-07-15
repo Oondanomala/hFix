@@ -8,7 +8,6 @@ import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -24,7 +23,7 @@ public class PlayerDetector {
             for (NetworkPlayerInfo info : Minecraft.getMinecraft().thePlayer.sendQueue.getPlayerInfoMap()) {
                 String name = info.getGameProfile().getName();
 
-                if (!previousTabList.contains(name) && Arrays.asList(HFix.config.playerDetectorNames).contains(name.toLowerCase())) {
+                if (!previousTabList.contains(name) && HFix.config.playerDetectorNames.contains(name.toLowerCase())) {
                     // FIXME: Sometimes the tab gets loaded in multiple ticks, and some players that were in the server get treated like they just joined
                     if (previousTabList.isEmpty()) {
                         Util.showChatMessage(EnumChatFormatting.RED + "WARNING: Player " + EnumChatFormatting.AQUA + name + EnumChatFormatting.RED + " is in the server.");
