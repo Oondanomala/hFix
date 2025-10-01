@@ -1,9 +1,10 @@
 {
   "homepage": "https://github.com/Oondanomala/hFix/releases/latest",
   "promos": {
-    "1.8.9-recommended": "1.2.0"
+    "1.8.9-recommended": "1.3.0"
   },
   "1.8.9": {
+    "1.3.0": "Rewritten the way the mod detects whether you are in Housing/Hypixel. Hopefully this fixes all the bugs the original implementation had.\nFixed NoCookie not working with the recent Housing update.\nThe NoCookie whitelist and Player Detector list are now case insensitive.",
     "1.2.0": "New feature: hiding player join and leave messages!\nMade the autoGG regex stricter, this should prevent any false positives.",
     "1.1.0": "New feature: warns you when players in a list join the server you are in!\nSlightly better buildscript and code.",
     "1.0.1": "Random autoGG messages, no more \"You cannot say the same message twice!\" annoyance!\nAdded update checker.\nBetter metadata, and better code.",
