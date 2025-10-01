@@ -22,7 +22,9 @@ public final class Util {
 
     public static void showChatMessage(String message) {
         if (Minecraft.getMinecraft().thePlayer == null) return;
-        Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText(EnumChatFormatting.GRAY + "[" + EnumChatFormatting.BLUE + EnumChatFormatting.BOLD + HFix.NAME + EnumChatFormatting.GRAY + "] " + message));
+        Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText(
+                EnumChatFormatting.GRAY + "[" + EnumChatFormatting.BLUE + EnumChatFormatting.BOLD + HFix.NAME + EnumChatFormatting.GRAY + "] " + message
+        ));
     }
 
     public static void sendMessageToChat(String message) {

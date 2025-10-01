@@ -19,17 +19,19 @@ public class ChatActions {
     @SubscribeEvent
     public void chatReceived(ClientChatReceivedEvent event) {
         if (event.type == 2) return;
+        String chatMessage = event.message.getUnformattedText();
+        String formattedChatMessage = event.message.getFormattedText();
 
         // Hide can't build message
-        if (HFix.config.hideCantBuildMessage && CANT_BUILD_MESSAGE.matcher(event.message.getUnformattedText()).matches()) {
+        if (HFix.config.hideCantBuildMessage && CANT_BUILD_MESSAGE.matcher(chatMessage).matches()) {
             event.setCanceled(true);
         }
         // Hide join and leave messages
-        else if (HFix.config.hideJoinAndLeaveMessage && JOIN_LEAVE_MESSAGES.matcher(event.message.getUnformattedText()).matches()) {
+        else if (HFix.config.hideJoinAndLeaveMessage && JOIN_LEAVE_MESSAGES.matcher(chatMessage).matches()) {
             event.setCanceled(true);
         }
         // Parkour autoGG
-        else if (HFix.config.parkourAutoGG && PARKOUR_COMPLETION_MESSAGE.matcher(event.message.getFormattedText()).matches()) {
+        else if (HFix.config.parkourAutoGG && PARKOUR_COMPLETION_MESSAGE.matcher(formattedChatMessage).matches()) {
             if (HFix.config.autoGGMessages.length == 0) {
                 Util.sendMessageToChat("/ac gg");
             } else if (HFix.config.autoGGMessages.length == 1) {
@@ -45,7 +47,7 @@ public class ChatActions {
         }
         // Cookie autoTY
         else if (HFix.config.cookieAutoTy) {
-            Matcher receivedCookieMatcher = RECEIVED_COOKIE_MESSAGE.matcher(event.message.getUnformattedText());
+            Matcher receivedCookieMatcher = RECEIVED_COOKIE_MESSAGE.matcher(chatMessage);
             if (receivedCookieMatcher.find()) {
                 Util.sendMessageToChat("/ac ty " + receivedCookieMatcher.group(1));
             }
