@@ -1,0 +1,13 @@
+root = true
+
+[*]
+insert_final_newline = true
+
+[*.java]
+charset = utf-8
+indent_style = space
+indent_size = 4
+
+[{*.json,*.info}]
+indent_size = 2
+charset = utf-8
