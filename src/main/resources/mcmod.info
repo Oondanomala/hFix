@@ -1,10 +1,10 @@
 [
   {
-    "modid": "hfix",
-    "name": "hFix",
+    "modid": "${modID}",
+    "name": "${modName}",
     "description": "Improves your housing experience with very important features.",
     "version": "${version}",
-    "mcversion": "${mcversion}",
+    "mcversion": "${mcVersion}",
     "url": "https://github.com/Oondanomala/hFix",
     "updateUrl": "",
     "authorList": [
