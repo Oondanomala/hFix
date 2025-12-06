@@ -3,6 +3,7 @@ package me.oondanomala.hfix;
 import me.oondanomala.hfix.config.Config;
 import me.oondanomala.hfix.location.LocationChecker;
 import me.oondanomala.hfix.util.Util;
+import net.minecraft.block.BlockTrapDoor;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -47,8 +48,10 @@ public class HFix {
         if (isOnHousing != onHousing) {
             if (onHousing) {
                 Util.registerEvents(housingEventList);
+                BlockTrapDoor.disableValidation = true;
             } else {
                 Util.unregisterEvents(housingEventList);
+                BlockTrapDoor.disableValidation = false;
             }
             isOnHousing = onHousing;
         }
