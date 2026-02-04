@@ -1,22 +1,18 @@
-# eclipse
-bin
-*.launch
-.settings
-.metadata
-.classpath
-.project
+# Gradle
+.gradle
+build/
+!**/src/main/**/build/
 
-# idea
-out
+# IDEs
+/.idea/
 *.ipr
 *.iws
 *.iml
-.idea
+/.vscode/
 
-# gradle
-build
-.gradle
+# OS Files
+.DS_Store
+Thumbs.db
 
-# other
-eclipse
-run
+# Minecraft
+/run/
