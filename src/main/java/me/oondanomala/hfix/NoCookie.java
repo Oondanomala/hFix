@@ -23,6 +23,7 @@ public class NoCookie {
                 String ownerName = Util.getHousingOwnerName();
                 if (ownerName == null) return;
                 if (!HFix.config.noCookieWhitelist.contains(ownerName.toLowerCase())) {
+                    Util.showChatMessage("Prevented giving cookies to " +  ownerName + '.');
                     event.setCanceled(true);
                 }
             }
