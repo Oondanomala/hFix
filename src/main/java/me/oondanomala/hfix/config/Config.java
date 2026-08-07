@@ -6,10 +6,7 @@ import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Locale;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Config {
@@ -17,6 +14,7 @@ public class Config {
 
     public boolean parkourAutoGG;
     public String[] autoGGMessages;
+    public HashMap<String, String> autoGGPlayersMap;
     public boolean hideCantBuildMessage;
     public boolean hideJoinAndLeaveMessage;
     public boolean cookieAutoTy;
@@ -45,8 +43,19 @@ public class Config {
                 "AutoGG Messages",
                 "chat",
                 new String[]{"gg", "gg!", "GG", "nice"},
-                "List of gg messages to be sent upon parkour completion. (Minimum 4 messages recommended)"
+                "List of gg messages to be sent upon parkour completion. (Minimum 4 messages recommended)\nYou can use {name} to include the player's name in the message."
         );
+        autoGGPlayersMap = config.getStringList(
+                "AutoGG Players",
+                "chat",
+                new String[]{},
+                "List of players to send a custom message to upon parkour completion. Format: playerName:message"
+        ).length == 0 ? new HashMap<>() : (HashMap<String, String>) Arrays.stream(config.getStringList(
+                "AutoGG Players",
+                "chat",
+                new String[]{},
+                "List of players to send a custom message to upon parkour completion. Format: playerName:message"
+        )).map(s -> s.split(":", 2)).filter(arr -> arr.length == 2).collect(Collectors.toMap(arr -> arr[0].toLowerCase(Locale.ENGLISH), arr -> arr[1]));
         hideCantBuildMessage = config.getBoolean(
                 "Hide Can't Build Message",
                 "chat",
